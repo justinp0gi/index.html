@@ -430,7 +430,9 @@
     document.getElementById('progress-pct').textContent = pct + '%';
     document.getElementById('progress-label').textContent = (idx + 1) + ' of 5 sections';
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    logProgress(sectionNames[idx]);
+    if (sectionNames[idx] !== 'quiz') {
+      logProgress(sectionNames[idx]);
+    }
   }
 
   let quizCorrectCount = 0;
