@@ -382,7 +382,7 @@
 <script>
   const SUPABASE_URL = 'https://gwvfivjuqsfqbuftesek.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd3dmZpdmp1cXNmcWJ1ZnRlc2VrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyNjc2NzUsImV4cCI6MjA5Nzg0MzY3NX0.oMowZN2ZSCXKUJEZDTwwpaVunu3s_fgZmtZCDib2qkg';
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   let currentTab = 0;
   let employeeName = '';
@@ -412,7 +412,7 @@
         section_completed: sectionName
       };
       if (quizScore !== undefined) row.quiz_score = quizScore;
-      const { error } = await supabase.from('onboarding_progress').insert([row]);
+      const { error } = await sb.from('onboarding_progress').insert([row]);
       if (error) console.error('Supabase insert error:', error.message);
     } catch (e) {
       console.error('Tracking failed:', e);
